@@ -1,0 +1,1 @@
+For %%i In ("C:\Users\Dmitriy\Desktop\OperSys\cmdAndPowerShell\Task7dir\*") Do rename "%%i" "_kek%%~nxi"

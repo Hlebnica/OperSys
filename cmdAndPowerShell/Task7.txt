@@ -1,0 +1,3 @@
+rem Объявляем основной каталог
+set main_dir=C:\Users\Dmitriy\Desktop\OperSys\cmdAndPowerShell\Task7dir
+
