@@ -1,0 +1,3 @@
+C:/Users/Dmitriy/Desktop/OperSys/API Windows Create Process/cmake-build-debug/CMakeFiles/API_Windows_Create_Process.dir
+C:/Users/Dmitriy/Desktop/OperSys/API Windows Create Process/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Dmitriy/Desktop/OperSys/API Windows Create Process/cmake-build-debug/CMakeFiles/rebuild_cache.dir
