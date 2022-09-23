@@ -15,7 +15,7 @@ void _tmain( int argc, TCHAR *argv[] )
     printf("Hello"); // Вывод Hello
 
     // Start the child process.
-    if( !CreateProcess( "c:\\windows\\notepad.exe",   // No module name (use command line)
+    if( !CreateProcess( "c:\\windows\\notepad.exe",
         NULL,        // Command line
         NULL,           // Process handle not inheritable
         NULL,           // Thread handle not inheritable
@@ -30,7 +30,6 @@ void _tmain( int argc, TCHAR *argv[] )
         printf( "CreateProcess failed (%d).\n", GetLastError() );
         return;
     }
-
 
     // Wait until child process exits.
     WaitForSingleObject( pi.hProcess, INFINITE );
