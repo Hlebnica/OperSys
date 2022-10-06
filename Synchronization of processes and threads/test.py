@@ -24,17 +24,23 @@ generator_sleep_time = 0.5
 def speed_up_consumer(*args):
     global generator_sleep_time, consumer_sleep_time
     generator_sleep_time += 0.1
-    if generator_sleep_time > 0.5 and consumer_sleep_time > 0.5:
-        consumer_sleep_time = 0.5
-        generator_sleep_time = 0.5
 
 
 def speed_up_generator(*args):
     global consumer_sleep_time, generator_sleep_time
     consumer_sleep_time += 0.1
-    if generator_sleep_time > 0.5 and consumer_sleep_time > 0.5:
-        consumer_sleep_time = 0.5
-        generator_sleep_time = 0.5
+
+
+def speed_down_consumer(*args):
+    global generator_sleep_time, consumer_sleep_time
+    if generator_sleep_time >= 0:
+        generator_sleep_time -= 0.1
+
+
+def speed_down_generator(*args):
+    global consumer_sleep_time, generator_sleep_time
+    if consumer_sleep_time >= 0:
+        consumer_sleep_time -= 0.1
 
 
 def write_to_bufer():
@@ -44,7 +50,7 @@ def write_to_bufer():
 
 def read_from_bufer():
     global bufer
-    #os.system('clear')
+    # os.system('clear')
     p = bufer.pop()
     print(f'{bufer}\n{len(bufer)}',
           f'\ngenerator_sleep_time --> {generator_sleep_time}',
@@ -71,14 +77,14 @@ def consumer():
             sleep(consumer_sleep_time)
 
 
-if __name__ == "__main__":
-    keyboard.on_release_key('1', speed_up_generator)
-    keyboard.on_release_key('2', speed_up_consumer)
-    keyboard.on_release_key()
+keyboard.on_release_key('1', speed_up_generator)
+keyboard.on_release_key('2', speed_up_consumer)
+keyboard.on_release_key('3', speed_down_generator)
+keyboard.on_release_key('4', speed_down_consumer)
 
-    generator_thread = Thread(target=generator)
-    consumer_thread = Thread(target=consumer)
-    generator_thread.start()
-    consumer_thread.start()
-    generator_thread.join()
-    consumer_thread.join()
+generator_thread = Thread(target=generator)
+consumer_thread = Thread(target=consumer)
+generator_thread.start()
+consumer_thread.start()
+generator_thread.join()
+consumer_thread.join()
