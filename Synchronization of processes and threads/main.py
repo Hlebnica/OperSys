@@ -13,7 +13,7 @@ from time import sleep
 from threading import Thread
 import keyboard
 
-bufer = []
+buffer = []
 generator_semaphore = 10
 consumer_semaphore = 0
 
@@ -38,12 +38,12 @@ def speed_up_generator(*args):
 
 
 def write_to_bufer():
-    global bufer
+    global buffer
     bufer.insert(0, random.randint(0, 10))
 
 
 def read_from_bufer():
-    global bufer
+    global buffer
     #os.system('clear')
     p = bufer.pop()
     print(f'{bufer}\n{len(bufer)}',
@@ -74,7 +74,6 @@ def consumer():
 if __name__ == "__main__":
     keyboard.on_release_key('1', speed_up_generator)
     keyboard.on_release_key('2', speed_up_consumer)
-    keyboard.on_release_key()
 
     generator_thread = Thread(target=generator)
     consumer_thread = Thread(target=consumer)
