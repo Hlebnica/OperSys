@@ -19,44 +19,40 @@ consumer_semaphore = 0
 generator_sleep_time = 0.5
 consumer_sleep_time = 0.5
 
-generator_pause = True
-consumer_pause = True
+generator_stop = True
+consumer_stop = True
 
 
-def generator_pause_changer(*args):
-    global generator_pause
-    if generator_pause:
-        generator_pause = False
-    if not generator_pause:
-        generator_pause = True
+def generator_stop_changer(*args):
+    global generator_stop
+    if generator_stop:
+        generator_stop = False
 
 
-def consumer_pause_changer(*args):
-    global consumer_pause
-    if consumer_pause:
-        consumer_pause = False
-    if not consumer_pause:
-        consumer_pause = True
+def consumer_stop_changer(*args):
+    global consumer_stop
+    if consumer_stop:
+        consumer_stop = False
 
 
-def speed_up_consumer(*args):
-    global generator_sleep_time, consumer_sleep_time
-    generator_sleep_time += 0.1
-
-
-def speed_up_generator(*args):
-    global consumer_sleep_time, generator_sleep_time
+def sleep_up_consumer(*args):
+    global consumer_sleep_time
     consumer_sleep_time += 0.1
 
 
-def speed_down_consumer(*args):
-    global generator_sleep_time, consumer_sleep_time
-    generator_sleep_time -= 0.1
+def sleep_up_generator(*args):
+    global generator_sleep_time
+    generator_sleep_time += 0.1
 
 
-def speed_down_generator(*args):
-    global consumer_sleep_time, generator_sleep_time
+def sleep_down_consumer(*args):
+    global consumer_sleep_time
     consumer_sleep_time -= 0.1
+
+
+def sleep_down_generator(*args):
+    global generator_sleep_time
+    generator_sleep_time -= 0.1
 
 
 def write_to_buffer():
@@ -67,14 +63,14 @@ def write_to_buffer():
 def read_from_buffer():
     global buffer
     buffer.pop()
-    print(f'{buffer}\n len of buffer {len(buffer)}',
+    print(f'{buffer}\nlen of buffer {len(buffer)}',
           f'\ngenerator_sleep_time --> {generator_sleep_time}',
           f'\nconsumer_sleep_time --> {consumer_sleep_time}')
 
 
 def generator():
-    global consumer_semaphore, generator_semaphore
-    while generator_pause:
+    global consumer_semaphore, generator_semaphore, generator_stop
+    while generator_stop:
         if generator_semaphore >= 0:
             write_to_buffer()
             consumer_semaphore += 1
@@ -83,8 +79,8 @@ def generator():
 
 
 def consumer():
-    global consumer_semaphore, generator_semaphore
-    while consumer_pause:
+    global consumer_semaphore, generator_semaphore, consumer_stop
+    while consumer_stop:
         if consumer_semaphore > 0:
             read_from_buffer()
             consumer_semaphore -= 1
@@ -92,12 +88,12 @@ def consumer():
             sleep(consumer_sleep_time)
 
 
-keyboard.on_release_key('1', speed_up_generator)
-keyboard.on_release_key('2', speed_up_consumer)
-keyboard.on_release_key('3', speed_down_generator)
-keyboard.on_release_key('4', speed_down_consumer)
-keyboard.on_release_key('5', generator_pause_changer)
-keyboard.on_release_key('6', consumer_pause_changer)
+keyboard.on_release_key('1', sleep_up_generator)
+keyboard.on_release_key('2', sleep_up_consumer)
+keyboard.on_release_key('3', sleep_down_generator)
+keyboard.on_release_key('4', sleep_down_consumer)
+keyboard.on_release_key('5', generator_stop_changer, consumer_stop_changer)
+
 
 generator_thread = Thread(target=generator)
 consumer_thread = Thread(target=consumer)
