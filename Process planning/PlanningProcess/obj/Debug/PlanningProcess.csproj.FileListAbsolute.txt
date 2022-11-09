@@ -1,0 +1,10 @@
+F:\OperSys\Process planning\PlanningProcess\bin\Debug\PlanningProcess.exe.config
+F:\OperSys\Process planning\PlanningProcess\bin\Debug\PlanningProcess.exe
+F:\OperSys\Process planning\PlanningProcess\bin\Debug\PlanningProcess.pdb
+F:\OperSys\Process planning\PlanningProcess\obj\Debug\PlanningProcess.csproj.AssemblyReference.cache
+F:\OperSys\Process planning\PlanningProcess\obj\Debug\PlanningProcess.Properties.Resources.resources
+F:\OperSys\Process planning\PlanningProcess\obj\Debug\PlanningProcess.csproj.GenerateResource.cache
+F:\OperSys\Process planning\PlanningProcess\obj\Debug\PlanningProcess.csproj.CoreCompileInputs.cache
+F:\OperSys\Process planning\PlanningProcess\obj\Debug\PlanningProcess.exe
+F:\OperSys\Process planning\PlanningProcess\obj\Debug\PlanningProcess.pdb
+F:\OperSys\Process planning\PlanningProcess\obj\Debug\PlanningProcess.Process.resources
