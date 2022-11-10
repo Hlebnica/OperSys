@@ -56,7 +56,6 @@
             this.CentralProcess.Size = new System.Drawing.Size(38, 22);
             this.CentralProcess.TabIndex = 0;
             this.CentralProcess.Text = "ЦП\r\n";
-            this.CentralProcess.Click += new System.EventHandler(this.CentralProcess_Click);
             // 
             // Memory
             // 
@@ -76,7 +75,6 @@
             this.ProcessList.Name = "ProcessList";
             this.ProcessList.Size = new System.Drawing.Size(543, 388);
             this.ProcessList.TabIndex = 2;
-            this.ProcessList.SelectedIndexChanged += new System.EventHandler(this.ProcessList_SelectedIndexChanged);
             // 
             // AddProcessLow
             // 
@@ -117,7 +115,6 @@
             this.Memory_Counter_label.TabIndex = 6;
             this.Memory_Counter_label.Text = "0";
             this.Memory_Counter_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Memory_Counter_label.Click += new System.EventHandler(this.Memory_Counter_label_Click);
             // 
             // CurrentTime_label
             // 
@@ -225,6 +222,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.FCFS_groupBox.ResumeLayout(false);
             this.FCFS_groupBox.PerformLayout();
