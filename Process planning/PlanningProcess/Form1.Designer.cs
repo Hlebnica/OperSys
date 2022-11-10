@@ -45,6 +45,8 @@
             this.RR_groupBox = new System.Windows.Forms.GroupBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.SecondProcess_Low_button = new System.Windows.Forms.Button();
+            this.SecondProcess_Middle_button = new System.Windows.Forms.Button();
             this.FCFS_groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,9 +83,9 @@
             this.AddProcessLow.Location = new System.Drawing.Point(7, 22);
             this.AddProcessLow.Margin = new System.Windows.Forms.Padding(4);
             this.AddProcessLow.Name = "AddProcessLow";
-            this.AddProcessLow.Size = new System.Drawing.Size(195, 50);
+            this.AddProcessLow.Size = new System.Drawing.Size(250, 50);
             this.AddProcessLow.TabIndex = 3;
-            this.AddProcessLow.Text = "Add1";
+            this.AddProcessLow.Text = "Маленький процесс";
             this.AddProcessLow.UseVisualStyleBackColor = true;
             this.AddProcessLow.Click += new System.EventHandler(this.AddProcessLow_Click);
             // 
@@ -92,9 +94,9 @@
             this.AddProcessMiddle.Location = new System.Drawing.Point(8, 95);
             this.AddProcessMiddle.Margin = new System.Windows.Forms.Padding(4);
             this.AddProcessMiddle.Name = "AddProcessMiddle";
-            this.AddProcessMiddle.Size = new System.Drawing.Size(192, 53);
+            this.AddProcessMiddle.Size = new System.Drawing.Size(249, 53);
             this.AddProcessMiddle.TabIndex = 4;
-            this.AddProcessMiddle.Text = "Add2";
+            this.AddProcessMiddle.Text = "Процесс побольше";
             this.AddProcessMiddle.UseVisualStyleBackColor = true;
             this.AddProcessMiddle.Click += new System.EventHandler(this.AddProcessMiddle_Click);
             // 
@@ -150,9 +152,9 @@
             // 
             this.AddNewCustomProcess_button.Location = new System.Drawing.Point(133, 177);
             this.AddNewCustomProcess_button.Name = "AddNewCustomProcess_button";
-            this.AddNewCustomProcess_button.Size = new System.Drawing.Size(69, 61);
+            this.AddNewCustomProcess_button.Size = new System.Drawing.Size(124, 61);
             this.AddNewCustomProcess_button.TabIndex = 11;
-            this.AddNewCustomProcess_button.Text = "Add Custom";
+            this.AddNewCustomProcess_button.Text = "Настраиваемый процесс";
             this.AddNewCustomProcess_button.UseVisualStyleBackColor = true;
             this.AddNewCustomProcess_button.Click += new System.EventHandler(this.AddNewCustomProcess_button_Click);
             // 
@@ -165,7 +167,7 @@
             this.FCFS_groupBox.Controls.Add(this.CPCustomProcess_textBox);
             this.FCFS_groupBox.Location = new System.Drawing.Point(25, 449);
             this.FCFS_groupBox.Name = "FCFS_groupBox";
-            this.FCFS_groupBox.Size = new System.Drawing.Size(221, 256);
+            this.FCFS_groupBox.Size = new System.Drawing.Size(270, 256);
             this.FCFS_groupBox.TabIndex = 12;
             this.FCFS_groupBox.TabStop = false;
             this.FCFS_groupBox.Text = "FCFS";
@@ -173,7 +175,7 @@
             // 
             // RR_groupBox
             // 
-            this.RR_groupBox.Location = new System.Drawing.Point(264, 449);
+            this.RR_groupBox.Location = new System.Drawing.Point(330, 449);
             this.RR_groupBox.Name = "RR_groupBox";
             this.RR_groupBox.Size = new System.Drawing.Size(266, 256);
             this.RR_groupBox.TabIndex = 13;
@@ -203,11 +205,33 @@
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
+            // SecondProcess_Low_button
+            // 
+            this.SecondProcess_Low_button.Location = new System.Drawing.Point(629, 459);
+            this.SecondProcess_Low_button.Name = "SecondProcess_Low_button";
+            this.SecondProcess_Low_button.Size = new System.Drawing.Size(130, 38);
+            this.SecondProcess_Low_button.TabIndex = 16;
+            this.SecondProcess_Low_button.Text = "Add1";
+            this.SecondProcess_Low_button.UseVisualStyleBackColor = true;
+            this.SecondProcess_Low_button.Click += new System.EventHandler(this.SecondProcess_Low_button_Click);
+            // 
+            // SecondProcess_Middle_button
+            // 
+            this.SecondProcess_Middle_button.Location = new System.Drawing.Point(629, 516);
+            this.SecondProcess_Middle_button.Name = "SecondProcess_Middle_button";
+            this.SecondProcess_Middle_button.Size = new System.Drawing.Size(130, 38);
+            this.SecondProcess_Middle_button.TabIndex = 17;
+            this.SecondProcess_Middle_button.Text = "Add2";
+            this.SecondProcess_Middle_button.UseVisualStyleBackColor = true;
+            this.SecondProcess_Middle_button.Click += new System.EventHandler(this.SecondProcess_Middle_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(831, 751);
+            this.ClientSize = new System.Drawing.Size(970, 751);
+            this.Controls.Add(this.SecondProcess_Middle_button);
+            this.Controls.Add(this.SecondProcess_Low_button);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.RR_groupBox);
@@ -228,6 +252,10 @@
             this.FCFS_groupBox.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button SecondProcess_Low_button;
+
+        private System.Windows.Forms.Button SecondProcess_Middle_button;
 
         private System.Windows.Forms.RadioButton radioButton2;
 

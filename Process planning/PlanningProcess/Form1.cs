@@ -39,6 +39,8 @@ namespace PlanningProcess
     public partial class Form1 : Form
     {
         QueueFifo _process = new QueueFifo(); // Очередь для FIFO
+        private List<Process> _listOfProcess = new List<Process>();
+        private List<Process> _sortedList = new List<Process>();
         public int IdCounter = 0; // Счетчик id
         public int CentralProcessorCounter = 0; // Счетчик нагрузки процессора
         public int AllocatedMemoryCounter = 0; // Счетки выделенной памяти
@@ -149,6 +151,19 @@ namespace PlanningProcess
         private void Form1_FormClosing(object sender, FormClosingEventArgs e) 
         {
             Environment.Exit(Environment.ExitCode);
+        }
+
+        private void SecondProcess_Low_button_Click(object sender, EventArgs e)
+        {
+            Process secondProcessLow = new Process(IdCounter, 15, 25, 5000);
+            _listOfProcess.Add(secondProcessLow);
+            _sortedList = _listOfProcess.OrderBy(o=>o.TimeToExecute).ToList();
+            
+        }
+
+        private void SecondProcess_Middle_button_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
