@@ -44,14 +44,17 @@ namespace PlanningProcess
         public int IdCounter = 0; // Счетчик id
         public int CentralProcessorCounter = 0; // Счетчик нагрузки процессора
         public int AllocatedMemoryCounter = 0; // Счетки выделенной памяти
-        public int MaxCp = 100;
-        public int MaxMemory = 250;
         
         
         public Form1()
         {
             InitializeComponent();
             
+           
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
             // Поток удаляющий элементы из списка
             new Thread(() =>
             {
@@ -59,24 +62,22 @@ namespace PlanningProcess
                 {
                     if(ProcessList.Items.Count > 0) 
                     {
+                        Process itemNow = (Process) ProcessList.Items[0]; 
+                        Thread.Sleep(itemNow.TimeToExecute);
+                        label1.Text = itemNow.TimeToExecute.ToString();
+                        CentralProcessorCounter -= itemNow.HighlightingCentralProcessor;
+                        CP_Counter_label.Text = CentralProcessorCounter.ToString();
+                        AllocatedMemoryCounter -= itemNow.AllocatedMemory;
+                        Memory_Counter_label.Text = AllocatedMemoryCounter.ToString();
                         Invoke(new MethodInvoker(() => ProcessList.Items.RemoveAt(0)));
-                        
-                        CentralProcessorCounter += ProcessList.Items;
-                        AllocatedMemoryCounter += lowProcess.AllocatedMemory;
                     }
-                    Thread.Sleep(5000); //Wait 5 seconds.
                 } 
-            }).Start(); //Spawn our thread that runs in the background.
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
+            }).Start(); 
         }
         
         private void AddProcessLow_Click(object sender, EventArgs e)
         {
-            Process lowProcess = new Process(IdCounter, 10, 20, 5);
+            Process lowProcess = new Process(IdCounter, 10, 20, 2000);
             _process.ProcessFifo.Enqueue(lowProcess);
             ProcessList.Items.Add(_process.ProcessFifo.Dequeue());
             IdCounter++;
@@ -93,7 +94,7 @@ namespace PlanningProcess
 
         private void AddProcessMiddle_Click(object sender, EventArgs e)
         {
-            Process middleProcess = new Process(IdCounter, 15, 25, 10);
+            Process middleProcess = new Process(IdCounter, 15, 25, 5000);
             _process.ProcessFifo.Enqueue(middleProcess);
             ProcessList.Items.Add(_process.ProcessFifo.Dequeue());
             IdCounter++;
@@ -104,6 +105,11 @@ namespace PlanningProcess
         }
 
         private void CentralProcess_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Memory_Counter_label_Click(object sender, EventArgs e)
         {
             
         }

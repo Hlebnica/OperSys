@@ -96,7 +96,7 @@
             this.CP_Counter_label.Name = "CP_Counter_label";
             this.CP_Counter_label.Size = new System.Drawing.Size(64, 21);
             this.CP_Counter_label.TabIndex = 5;
-            this.CP_Counter_label.Text = "CP_counter";
+            this.CP_Counter_label.Text = "0";
             this.CP_Counter_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Memory_Counter_label
@@ -105,8 +105,9 @@
             this.Memory_Counter_label.Name = "Memory_Counter_label";
             this.Memory_Counter_label.Size = new System.Drawing.Size(64, 21);
             this.Memory_Counter_label.TabIndex = 6;
-            this.Memory_Counter_label.Text = "Memory_counter";
+            this.Memory_Counter_label.Text = "0";
             this.Memory_Counter_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Memory_Counter_label.Click += new System.EventHandler(this.Memory_Counter_label_Click);
             // 
             // Form1
             // 
