@@ -5,11 +5,13 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PlanningProcess
 {
+    
     public class Process
     {
         public int Id { get; set; } // айди
@@ -34,12 +36,37 @@ namespace PlanningProcess
         }
     }
     
+    
+    
     public partial class Form1 : Form
     {
-        QueueFifo process = new QueueFifo();
+        QueueFifo _process = new QueueFifo(); // Очередь для FIFO
+        public int IdCounter = 0; // Счетчик id
+        public int CentralProcessorCounter = 0; // Счетчик нагрузки процессора
+        public int AllocatedMemoryCounter = 0; // Счетки выделенной памяти
+        public int MaxCp = 100;
+        public int MaxMemory = 250;
+        
+        
         public Form1()
         {
             InitializeComponent();
+            
+            // Поток удаляющий элементы из списка
+            new Thread(() =>
+            {
+                while(true)
+                {
+                    if(ProcessList.Items.Count > 0) 
+                    {
+                        Invoke(new MethodInvoker(() => ProcessList.Items.RemoveAt(0)));
+                        
+                        CentralProcessorCounter += ProcessList.Items;
+                        AllocatedMemoryCounter += lowProcess.AllocatedMemory;
+                    }
+                    Thread.Sleep(5000); //Wait 5 seconds.
+                } 
+            }).Start(); //Spawn our thread that runs in the background.
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -49,8 +76,14 @@ namespace PlanningProcess
         
         private void AddProcessLow_Click(object sender, EventArgs e)
         {
-            process.ProcessFifo.Enqueue(new Process(1, 10, 20, 5));
-            ProcessList.Items.Add(process.ProcessFifo.Dequeue());
+            Process lowProcess = new Process(IdCounter, 10, 20, 5);
+            _process.ProcessFifo.Enqueue(lowProcess);
+            ProcessList.Items.Add(_process.ProcessFifo.Dequeue());
+            IdCounter++;
+            CentralProcessorCounter += lowProcess.HighlightingCentralProcessor;
+            AllocatedMemoryCounter += lowProcess.AllocatedMemory;
+            CP_Counter_label.Text = CentralProcessorCounter.ToString();
+            Memory_Counter_label.Text = AllocatedMemoryCounter.ToString();
         }
 
         private void ProcessList_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,8 +93,19 @@ namespace PlanningProcess
 
         private void AddProcessMiddle_Click(object sender, EventArgs e)
         {
-            process.ProcessFifo.Enqueue(new Process(2, 15, 25, 10));
-            ProcessList.Items.Add(process.ProcessFifo.Dequeue());
+            Process middleProcess = new Process(IdCounter, 15, 25, 10);
+            _process.ProcessFifo.Enqueue(middleProcess);
+            ProcessList.Items.Add(_process.ProcessFifo.Dequeue());
+            IdCounter++;
+            CentralProcessorCounter += middleProcess.HighlightingCentralProcessor;
+            AllocatedMemoryCounter += middleProcess.AllocatedMemory;
+            CP_Counter_label.Text = CentralProcessorCounter.ToString();
+            Memory_Counter_label.Text = AllocatedMemoryCounter.ToString();
+        }
+
+        private void CentralProcess_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
