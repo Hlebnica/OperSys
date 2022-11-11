@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -40,7 +41,6 @@ namespace PlanningProcess
     {
         QueueFifo _process = new QueueFifo(); // Очередь для FIFO
         private List<Process> _listOfProcess = new List<Process>();
-        private List<Process> _sortedList = new List<Process>();
         public int IdCounter = 0; // Счетчик id
         public int CentralProcessorCounter = 0; // Счетчик нагрузки процессора
         public int AllocatedMemoryCounter = 0; // Счетки выделенной памяти
@@ -51,8 +51,9 @@ namespace PlanningProcess
             {
                 if(ProcessList.Items.Count > 0) 
                 {
-                    Process itemNow = (Process) ProcessList.Items[0]; // Получение текущей записи по ID 
-                    Thread.Sleep(itemNow.TimeToExecute); // Ожидание во время выполнения задачи
+                    Process itemNow = (Process) ProcessList.Items[0]; // Получение текущей записи по ID
+                    //debug_label.Text = itemNow.TimeToExecute.ToString(); // дебаг !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Не забыть убрать
+                    //Thread.Sleep(itemNow.TimeToExecute); // Ожидание во время выполнения задачи
                     CentralProcessorCounter -= itemNow.HighlightingCentralProcessor;
                     CP_Counter_label.Text = CentralProcessorCounter.ToString();
                     AllocatedMemoryCounter -= itemNow.AllocatedMemory;
@@ -61,12 +62,12 @@ namespace PlanningProcess
                 }
             } 
         }
-
+        
         private void DateTimeNowChanger() // Обновление текущего системного времени
         {
             while (true)
             {
-                CurrentTime_label.Text = DateTime.Now.ToString();
+                CurrentTime_label.Text = DateTime.Now.ToString(CultureInfo.InvariantCulture);
             }  
         }
         
@@ -95,7 +96,7 @@ namespace PlanningProcess
         
         private void AddProcessLow_Click(object sender, EventArgs e) // Добавление маленького процесса для FCFS
         {
-            Process lowProcess = new Process(IdCounter, 10, 20, 2000); // Конструктор процесса
+            Process lowProcess = new Process(IdCounter, 20, 20, 20*20*10); // Конструктор процесса
             _process.ProcessFifo.Enqueue(lowProcess); // Добавление в очередь
             ProcessList.Items.Add(_process.ProcessFifo.Dequeue()); // Добавить в список на форме
             IdCounter++; // Увеличение ID для следующего процесса
@@ -108,7 +109,7 @@ namespace PlanningProcess
 
         private void AddProcessMiddle_Click(object sender, EventArgs e) // Добавление процесса побольше для FCFS
         {
-            Process middleProcess = new Process(IdCounter, 15, 25, 5000);
+            Process middleProcess = new Process(IdCounter, 20, 25, 15*25*10);
             _process.ProcessFifo.Enqueue(middleProcess);
             ProcessList.Items.Add(_process.ProcessFifo.Dequeue());
             IdCounter++;
@@ -138,13 +139,13 @@ namespace PlanningProcess
         private void radioButton1_CheckedChanged(object sender, EventArgs e) // Отобразить 1 группу
         {
             FCFS_groupBox.Visible = true;
-            RR_groupBox.Visible = false;
+            SJF_groupBox.Visible = false;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e) // Отобразить 2 группу
         {
             FCFS_groupBox.Visible = false;
-            RR_groupBox.Visible = true;
+            SJF_groupBox.Visible = true;
         }
 
 
@@ -155,15 +156,61 @@ namespace PlanningProcess
 
         private void SecondProcess_Low_button_Click(object sender, EventArgs e)
         {
-            Process secondProcessLow = new Process(IdCounter, 15, 25, 5000);
-            _listOfProcess.Add(secondProcessLow);
-            _sortedList = _listOfProcess.OrderBy(o=>o.TimeToExecute).ToList();
+            Process secondProcessLow = new Process(IdCounter, 20, 20, 20*20*10);
+            ProcessList.Items.Add(secondProcessLow);
+            IdCounter++;
+            CentralProcessorCounter += secondProcessLow.HighlightingCentralProcessor;
+            AllocatedMemoryCounter += secondProcessLow.AllocatedMemory;
+            CP_Counter_label.Text = CentralProcessorCounter.ToString();
+            Memory_Counter_label.Text = AllocatedMemoryCounter.ToString();
+            _listOfProcess = ProcessList.Items.Cast<Process>().OrderBy(x => x.TimeToExecute).ToList();
+            ProcessList.Items.Clear();
+            foreach (var process in _listOfProcess)
+            {
+                ProcessList.Items.Add(process);
+            }
             
         }
-
+        
         private void SecondProcess_Middle_button_Click(object sender, EventArgs e)
         {
+            Process secondProcessMiddle = new Process(IdCounter, 20, 25, 15*25*10);
+            ProcessList.Items.Add(secondProcessMiddle);
+            IdCounter++;
+            CentralProcessorCounter += secondProcessMiddle.HighlightingCentralProcessor;
+            AllocatedMemoryCounter += secondProcessMiddle.AllocatedMemory;
+            CP_Counter_label.Text = CentralProcessorCounter.ToString();
+            Memory_Counter_label.Text = AllocatedMemoryCounter.ToString();
+            _listOfProcess = ProcessList.Items.Cast<Process>().OrderBy(x => x.TimeToExecute).ToList();
+            ProcessList.Items.Clear();
+            foreach (var process in _listOfProcess)
+            {
+                ProcessList.Items.Add(process);
+            }
             
+        }
+        
+        private void AddNewCustomSJF_button_Click(object sender, EventArgs e)
+        {
+            if (CPUCustom_SJF_textBox.Text != string.Empty && MemoryCustom_SJF_textBox.Text != string.Empty)
+            {
+                Process secondProcessCustom = new Process(IdCounter, Convert.ToInt32(CPUCustom_SJF_textBox.Text),
+                    Convert.ToInt32(MemoryCustom_SJF_textBox.Text), 
+                    Convert.ToInt32(CPUCustom_SJF_textBox.Text) * Convert.ToInt32(MemoryCustom_SJF_textBox.Text) * 10);
+                ProcessList.Items.Add(secondProcessCustom);
+                IdCounter++;
+                CentralProcessorCounter += secondProcessCustom.HighlightingCentralProcessor;
+                AllocatedMemoryCounter += secondProcessCustom.AllocatedMemory;
+                CP_Counter_label.Text = CentralProcessorCounter.ToString();
+                Memory_Counter_label.Text = AllocatedMemoryCounter.ToString();
+                _listOfProcess = ProcessList.Items.Cast<Process>().OrderBy(x => x.TimeToExecute).ToList();
+                ProcessList.Items.Clear();
+                foreach (var process in _listOfProcess)
+                {
+                    ProcessList.Items.Add(process);
+                }
+                
+            }
         }
     }
 }
