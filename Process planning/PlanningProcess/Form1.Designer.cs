@@ -29,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.CentralProcess = new System.Windows.Forms.Label();
             this.Memory = new System.Windows.Forms.Label();
             this.ProcessList = new System.Windows.Forms.ListBox();
@@ -50,7 +51,7 @@
             this.SecondProcess_Low_button = new System.Windows.Forms.Button();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.debug_label = new System.Windows.Forms.Label();
+            this.Timer_form = new System.Windows.Forms.Timer(this.components);
             this.FCFS_groupBox.SuspendLayout();
             this.SJF_groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -271,20 +272,15 @@
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // debug_label
+            // Timer_form
             // 
-            this.debug_label.Location = new System.Drawing.Point(588, 460);
-            this.debug_label.Name = "debug_label";
-            this.debug_label.Size = new System.Drawing.Size(100, 23);
-            this.debug_label.TabIndex = 16;
-            this.debug_label.Text = "label2";
+            this.Timer_form.Tick += new System.EventHandler(this.Timer_form_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(728, 610);
-            this.Controls.Add(this.debug_label);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.SJF_groupBox);
@@ -307,7 +303,7 @@
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Label debug_label;
+        private System.Windows.Forms.Timer Timer_form;
 
         private System.Windows.Forms.Button AddNewCustomSJF_button;
         private System.Windows.Forms.TextBox MemoryCustom_SJF_textBox;
