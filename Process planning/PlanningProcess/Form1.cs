@@ -39,38 +39,30 @@ namespace PlanningProcess
     
     public partial class Form1 : Form
     {
-        QueueFifo _process = new QueueFifo(); // Очередь для FIFO
+        private List<Process> _listOfProcessToSort = new List<Process>();
         private List<Process> _listOfProcess = new List<Process>();
         public int IdCounter = 0; // Счетчик id
         public int CentralProcessorCounter = 0; // Счетчик нагрузки процессора
         public int AllocatedMemoryCounter = 0; // Счетки выделенной памяти
         public int CountItemInList = 0;
-        
-        /*private void DeleteElementsFromTextBox() // Удаление элемента из списка
-        {
-            while(true)
-            {
-                if(ProcessList.Items.Count > 0) 
-                {
-                    Process itemNow = (Process) ProcessList.Items[0]; // Получение текущей записи по ID
-                    //debug_label.Text = itemNow.TimeToExecute.ToString(); // дебаг !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Не забыть убрать
-                    //Thread.Sleep(itemNow.TimeToExecute); // Ожидание во время выполнения задачи
-                    CentralProcessorCounter -= itemNow.HighlightingCentralProcessor;
-                    CP_Counter_label.Text = CentralProcessorCounter.ToString();
-                    AllocatedMemoryCounter -= itemNow.AllocatedMemory;
-                    Memory_Counter_label.Text = AllocatedMemoryCounter.ToString();
-                    Invoke(new MethodInvoker(() => ProcessList.Items.RemoveAt(0))); // Удаление из списка выполненной задачи
-                }
-            } 
-        }*/
-        
+
         private void DeleteElementsFromTextBox() // Удаление элемента из списка
         {
-            if(ProcessList.Items.Count > 0) 
+            if(ProcessList.Items.Count > 0)
             {
                 Process itemNow = (Process) ProcessList.Items[0]; // Получение текущей записи по ID
                 Timer_form.Interval = itemNow.TimeToExecute;
-                //Thread.Sleep(itemNow.TimeToExecute); // Ожидание во время выполнения задачи
+                foreach (Process items in ProcessList.Items)
+                {
+                    _listOfProcess.Add(items);
+                }
+                ProcessList.Items.Clear();
+                foreach (Process process in _listOfProcess)
+                {
+                    ProcessList.Items.Add(process);
+                }
+                _listOfProcess.Clear();
+                Timer_form.Start();
                 CentralProcessorCounter -= itemNow.HighlightingCentralProcessor;
                 AllocatedMemoryCounter -= itemNow.AllocatedMemory;
                 CP_Counter_label.Text = CentralProcessorCounter.ToString();
@@ -87,22 +79,24 @@ namespace PlanningProcess
             }  
         }
 
-        private void FifoButton(int highlightingCentralProcessor, int allocatedMemory)
+        private void FifoButton(int highlightingCentralProcessor, int allocatedMemory) // Метод FIFO
         {
             Process process = new Process(IdCounter, highlightingCentralProcessor, allocatedMemory, highlightingCentralProcessor * allocatedMemory * 10); // Конструктор процесса
-            _process.ProcessFifo.Enqueue(process); // Добавление в очередь
-            ProcessList.Items.Add(_process.ProcessFifo.Dequeue()); // Добавить в список на форме
+            ProcessList.Items.Add(process); // Добавить в список на форме
             IdCounter++; // Увеличение ID для следующего процесса
             CentralProcessorCounter += process.HighlightingCentralProcessor; // Добавление к счетчику процессора
             AllocatedMemoryCounter += process.AllocatedMemory; // Добавление к счетчику памяти
             CP_Counter_label.Text = CentralProcessorCounter.ToString(); // Запись значения счетчика процессора в label
             Memory_Counter_label.Text = AllocatedMemoryCounter.ToString(); // Запись значения счетчика памяти в label
-            Process itemNow = (Process) ProcessList.Items[0];
-            Timer_form.Interval = itemNow.TimeToExecute;
-            Timer_form.Start();
+            if (ProcessList.Items.Count == 1)
+            {
+                Process itemNow = (Process) ProcessList.Items[0];
+                Timer_form.Interval = itemNow.TimeToExecute;
+                Timer_form.Start();
+            }
         }
 
-        private void SjfButton(int highlightingCentralProcessor, int allocatedMemory)
+        private void SjfButton(int highlightingCentralProcessor, int allocatedMemory) // Метод SJF
         {
             Process secondProcess = new Process(IdCounter, highlightingCentralProcessor, allocatedMemory, highlightingCentralProcessor * allocatedMemory * 10);
             ProcessList.Items.Add(secondProcess);
@@ -111,15 +105,18 @@ namespace PlanningProcess
             AllocatedMemoryCounter += secondProcess.AllocatedMemory;
             CP_Counter_label.Text = CentralProcessorCounter.ToString();
             Memory_Counter_label.Text = AllocatedMemoryCounter.ToString();
-            _listOfProcess = ProcessList.Items.Cast<Process>().OrderBy(x => x.TimeToExecute).ToList();
+            _listOfProcessToSort = ProcessList.Items.Cast<Process>().OrderBy(x => x.TimeToExecute).ToList();
             ProcessList.Items.Clear();
-            foreach (var process in _listOfProcess)
+            foreach (var process in _listOfProcessToSort)
             {
                 ProcessList.Items.Add(process);
             }
-            Process itemNow = (Process) ProcessList.Items[0];
-            Timer_form.Interval = itemNow.TimeToExecute;
-            Timer_form.Start();
+            if (ProcessList.Items.Count == 1)
+            {
+                Process itemNow = (Process) ProcessList.Items[0];
+                Timer_form.Interval = itemNow.TimeToExecute;
+                Timer_form.Start();
+            }
         }
 
         public Form1()
@@ -129,12 +126,6 @@ namespace PlanningProcess
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
-            /*Thread deleteElementsListBox = new Thread(DeleteElementsFromTextBox) // Поток удаляющий элементы из списка 
-            {
-                IsBackground = true
-            };
-            deleteElementsListBox.Start();*/
             Thread updateDateTineNow = new Thread(DateTimeNowChanger) // Поток показ системной даты 
             {
                 IsBackground = true
