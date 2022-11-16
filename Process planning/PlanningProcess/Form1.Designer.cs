@@ -58,33 +58,38 @@
             // 
             // CentralProcess
             // 
-            this.CentralProcess.Location = new System.Drawing.Point(64, 54);
+            this.CentralProcess.Location = new System.Drawing.Point(85, 66);
+            this.CentralProcess.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CentralProcess.Name = "CentralProcess";
-            this.CentralProcess.Size = new System.Drawing.Size(28, 18);
+            this.CentralProcess.Size = new System.Drawing.Size(37, 22);
             this.CentralProcess.TabIndex = 0;
             this.CentralProcess.Text = "ЦП\r\n";
             // 
             // Memory
             // 
-            this.Memory.Location = new System.Drawing.Point(64, 80);
+            this.Memory.Location = new System.Drawing.Point(85, 98);
+            this.Memory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Memory.Name = "Memory";
-            this.Memory.Size = new System.Drawing.Size(48, 16);
+            this.Memory.Size = new System.Drawing.Size(64, 20);
             this.Memory.TabIndex = 1;
             this.Memory.Text = "Память";
             // 
             // ProcessList
             // 
             this.ProcessList.FormattingEnabled = true;
-            this.ProcessList.Location = new System.Drawing.Point(198, 8);
+            this.ProcessList.ItemHeight = 16;
+            this.ProcessList.Location = new System.Drawing.Point(310, 14);
+            this.ProcessList.Margin = new System.Windows.Forms.Padding(4);
             this.ProcessList.Name = "ProcessList";
-            this.ProcessList.Size = new System.Drawing.Size(408, 316);
+            this.ProcessList.Size = new System.Drawing.Size(648, 436);
             this.ProcessList.TabIndex = 2;
             // 
             // AddProcessLow
             // 
-            this.AddProcessLow.Location = new System.Drawing.Point(5, 18);
+            this.AddProcessLow.Location = new System.Drawing.Point(7, 22);
+            this.AddProcessLow.Margin = new System.Windows.Forms.Padding(4);
             this.AddProcessLow.Name = "AddProcessLow";
-            this.AddProcessLow.Size = new System.Drawing.Size(188, 41);
+            this.AddProcessLow.Size = new System.Drawing.Size(251, 50);
             this.AddProcessLow.TabIndex = 3;
             this.AddProcessLow.Text = "Маленький процесс";
             this.AddProcessLow.UseVisualStyleBackColor = true;
@@ -92,9 +97,10 @@
             // 
             // AddProcessMiddle
             // 
-            this.AddProcessMiddle.Location = new System.Drawing.Point(6, 77);
+            this.AddProcessMiddle.Location = new System.Drawing.Point(8, 95);
+            this.AddProcessMiddle.Margin = new System.Windows.Forms.Padding(4);
             this.AddProcessMiddle.Name = "AddProcessMiddle";
-            this.AddProcessMiddle.Size = new System.Drawing.Size(187, 43);
+            this.AddProcessMiddle.Size = new System.Drawing.Size(249, 53);
             this.AddProcessMiddle.TabIndex = 4;
             this.AddProcessMiddle.Text = "Процесс побольше";
             this.AddProcessMiddle.UseVisualStyleBackColor = true;
@@ -102,64 +108,60 @@
             // 
             // CP_Counter_label
             // 
-            this.CP_Counter_label.Location = new System.Drawing.Point(10, 52);
-            this.CP_Counter_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CP_Counter_label.Location = new System.Drawing.Point(13, 64);
             this.CP_Counter_label.Name = "CP_Counter_label";
-            this.CP_Counter_label.Size = new System.Drawing.Size(48, 17);
+            this.CP_Counter_label.Size = new System.Drawing.Size(64, 21);
             this.CP_Counter_label.TabIndex = 5;
             this.CP_Counter_label.Text = "0";
             this.CP_Counter_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Memory_Counter_label
             // 
-            this.Memory_Counter_label.Location = new System.Drawing.Point(10, 80);
-            this.Memory_Counter_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Memory_Counter_label.Location = new System.Drawing.Point(13, 98);
             this.Memory_Counter_label.Name = "Memory_Counter_label";
-            this.Memory_Counter_label.Size = new System.Drawing.Size(48, 17);
+            this.Memory_Counter_label.Size = new System.Drawing.Size(64, 21);
             this.Memory_Counter_label.TabIndex = 6;
             this.Memory_Counter_label.Text = "0";
             this.Memory_Counter_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CurrentTime_label
             // 
-            this.CurrentTime_label.Location = new System.Drawing.Point(10, 30);
-            this.CurrentTime_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CurrentTime_label.Location = new System.Drawing.Point(13, 37);
             this.CurrentTime_label.Name = "CurrentTime_label";
-            this.CurrentTime_label.Size = new System.Drawing.Size(110, 19);
+            this.CurrentTime_label.Size = new System.Drawing.Size(147, 23);
             this.CurrentTime_label.TabIndex = 7;
             this.CurrentTime_label.Text = "-";
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(9, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(12, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 19);
+            this.label1.Size = new System.Drawing.Size(147, 23);
             this.label1.TabIndex = 8;
             this.label1.Text = "Системное время:";
             // 
             // CPCustomProcess_textBox
             // 
-            this.CPCustomProcess_textBox.Location = new System.Drawing.Point(6, 125);
-            this.CPCustomProcess_textBox.Margin = new System.Windows.Forms.Padding(2);
+            this.CPCustomProcess_textBox.Location = new System.Drawing.Point(8, 154);
+            this.CPCustomProcess_textBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CPCustomProcess_textBox.Name = "CPCustomProcess_textBox";
-            this.CPCustomProcess_textBox.Size = new System.Drawing.Size(85, 20);
+            this.CPCustomProcess_textBox.Size = new System.Drawing.Size(112, 22);
             this.CPCustomProcess_textBox.TabIndex = 9;
             // 
             // MemoryCustomProcess_textBox
             // 
-            this.MemoryCustomProcess_textBox.Location = new System.Drawing.Point(5, 157);
-            this.MemoryCustomProcess_textBox.Margin = new System.Windows.Forms.Padding(2);
+            this.MemoryCustomProcess_textBox.Location = new System.Drawing.Point(7, 193);
+            this.MemoryCustomProcess_textBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MemoryCustomProcess_textBox.Name = "MemoryCustomProcess_textBox";
-            this.MemoryCustomProcess_textBox.Size = new System.Drawing.Size(86, 20);
+            this.MemoryCustomProcess_textBox.Size = new System.Drawing.Size(113, 22);
             this.MemoryCustomProcess_textBox.TabIndex = 10;
             // 
             // AddNewCustomProcess_button
             // 
-            this.AddNewCustomProcess_button.Location = new System.Drawing.Point(95, 125);
-            this.AddNewCustomProcess_button.Margin = new System.Windows.Forms.Padding(2);
+            this.AddNewCustomProcess_button.Location = new System.Drawing.Point(127, 154);
+            this.AddNewCustomProcess_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AddNewCustomProcess_button.Name = "AddNewCustomProcess_button";
-            this.AddNewCustomProcess_button.Size = new System.Drawing.Size(98, 50);
+            this.AddNewCustomProcess_button.Size = new System.Drawing.Size(131, 62);
             this.AddNewCustomProcess_button.TabIndex = 11;
             this.AddNewCustomProcess_button.Text = "Настраиваемый процесс";
             this.AddNewCustomProcess_button.UseVisualStyleBackColor = true;
@@ -172,11 +174,11 @@
             this.FCFS_groupBox.Controls.Add(this.AddProcessMiddle);
             this.FCFS_groupBox.Controls.Add(this.MemoryCustomProcess_textBox);
             this.FCFS_groupBox.Controls.Add(this.CPCustomProcess_textBox);
-            this.FCFS_groupBox.Location = new System.Drawing.Point(19, 365);
-            this.FCFS_groupBox.Margin = new System.Windows.Forms.Padding(2);
+            this.FCFS_groupBox.Location = new System.Drawing.Point(13, 208);
+            this.FCFS_groupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.FCFS_groupBox.Name = "FCFS_groupBox";
-            this.FCFS_groupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.FCFS_groupBox.Size = new System.Drawing.Size(202, 192);
+            this.FCFS_groupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FCFS_groupBox.Size = new System.Drawing.Size(269, 236);
             this.FCFS_groupBox.TabIndex = 12;
             this.FCFS_groupBox.TabStop = false;
             this.FCFS_groupBox.Text = "FCFS";
@@ -189,11 +191,11 @@
             this.SJF_groupBox.Controls.Add(this.SecondProcess_Middle_button);
             this.SJF_groupBox.Controls.Add(this.CPUCustom_SJF_textBox);
             this.SJF_groupBox.Controls.Add(this.SecondProcess_Low_button);
-            this.SJF_groupBox.Location = new System.Drawing.Point(248, 365);
-            this.SJF_groupBox.Margin = new System.Windows.Forms.Padding(2);
+            this.SJF_groupBox.Location = new System.Drawing.Point(12, 208);
+            this.SJF_groupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SJF_groupBox.Name = "SJF_groupBox";
-            this.SJF_groupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.SJF_groupBox.Size = new System.Drawing.Size(196, 192);
+            this.SJF_groupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SJF_groupBox.Size = new System.Drawing.Size(269, 236);
             this.SJF_groupBox.TabIndex = 13;
             this.SJF_groupBox.TabStop = false;
             this.SJF_groupBox.Text = "SJF";
@@ -201,10 +203,10 @@
             // 
             // AddNewCustomSJF_button
             // 
-            this.AddNewCustomSJF_button.Location = new System.Drawing.Point(94, 127);
-            this.AddNewCustomSJF_button.Margin = new System.Windows.Forms.Padding(2);
+            this.AddNewCustomSJF_button.Location = new System.Drawing.Point(125, 156);
+            this.AddNewCustomSJF_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AddNewCustomSJF_button.Name = "AddNewCustomSJF_button";
-            this.AddNewCustomSJF_button.Size = new System.Drawing.Size(98, 50);
+            this.AddNewCustomSJF_button.Size = new System.Drawing.Size(138, 62);
             this.AddNewCustomSJF_button.TabIndex = 18;
             this.AddNewCustomSJF_button.Text = "Настраиваемый процесс";
             this.AddNewCustomSJF_button.UseVisualStyleBackColor = true;
@@ -212,18 +214,18 @@
             // 
             // MemoryCustom_SJF_textBox
             // 
-            this.MemoryCustom_SJF_textBox.Location = new System.Drawing.Point(4, 159);
-            this.MemoryCustom_SJF_textBox.Margin = new System.Windows.Forms.Padding(2);
+            this.MemoryCustom_SJF_textBox.Location = new System.Drawing.Point(5, 196);
+            this.MemoryCustom_SJF_textBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MemoryCustom_SJF_textBox.Name = "MemoryCustom_SJF_textBox";
-            this.MemoryCustom_SJF_textBox.Size = new System.Drawing.Size(86, 20);
+            this.MemoryCustom_SJF_textBox.Size = new System.Drawing.Size(113, 22);
             this.MemoryCustom_SJF_textBox.TabIndex = 17;
             // 
             // SecondProcess_Middle_button
             // 
-            this.SecondProcess_Middle_button.Location = new System.Drawing.Point(4, 77);
-            this.SecondProcess_Middle_button.Margin = new System.Windows.Forms.Padding(2);
+            this.SecondProcess_Middle_button.Location = new System.Drawing.Point(5, 95);
+            this.SecondProcess_Middle_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SecondProcess_Middle_button.Name = "SecondProcess_Middle_button";
-            this.SecondProcess_Middle_button.Size = new System.Drawing.Size(188, 43);
+            this.SecondProcess_Middle_button.Size = new System.Drawing.Size(258, 53);
             this.SecondProcess_Middle_button.TabIndex = 17;
             this.SecondProcess_Middle_button.Text = "Процесс побольше";
             this.SecondProcess_Middle_button.UseVisualStyleBackColor = true;
@@ -231,18 +233,18 @@
             // 
             // CPUCustom_SJF_textBox
             // 
-            this.CPUCustom_SJF_textBox.Location = new System.Drawing.Point(5, 127);
-            this.CPUCustom_SJF_textBox.Margin = new System.Windows.Forms.Padding(2);
+            this.CPUCustom_SJF_textBox.Location = new System.Drawing.Point(7, 156);
+            this.CPUCustom_SJF_textBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CPUCustom_SJF_textBox.Name = "CPUCustom_SJF_textBox";
-            this.CPUCustom_SJF_textBox.Size = new System.Drawing.Size(85, 20);
+            this.CPUCustom_SJF_textBox.Size = new System.Drawing.Size(112, 22);
             this.CPUCustom_SJF_textBox.TabIndex = 16;
             // 
             // SecondProcess_Low_button
             // 
-            this.SecondProcess_Low_button.Location = new System.Drawing.Point(4, 18);
-            this.SecondProcess_Low_button.Margin = new System.Windows.Forms.Padding(2);
+            this.SecondProcess_Low_button.Location = new System.Drawing.Point(5, 22);
+            this.SecondProcess_Low_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SecondProcess_Low_button.Name = "SecondProcess_Low_button";
-            this.SecondProcess_Low_button.Size = new System.Drawing.Size(192, 41);
+            this.SecondProcess_Low_button.Size = new System.Drawing.Size(256, 50);
             this.SecondProcess_Low_button.TabIndex = 16;
             this.SecondProcess_Low_button.Text = "Маленький процесс";
             this.SecondProcess_Low_button.UseVisualStyleBackColor = true;
@@ -250,10 +252,10 @@
             // 
             // radioButton1
             // 
-            this.radioButton1.Location = new System.Drawing.Point(25, 131);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton1.Location = new System.Drawing.Point(21, 160);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(53, 27);
+            this.radioButton1.Size = new System.Drawing.Size(71, 33);
             this.radioButton1.TabIndex = 14;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "FCFS";
@@ -262,10 +264,10 @@
             // 
             // radioButton2
             // 
-            this.radioButton2.Location = new System.Drawing.Point(25, 162);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton2.Location = new System.Drawing.Point(209, 160);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(46, 27);
+            this.radioButton2.Size = new System.Drawing.Size(61, 33);
             this.radioButton2.TabIndex = 15;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "SJF";
@@ -278,9 +280,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 610);
+            this.ClientSize = new System.Drawing.Size(971, 464);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.SJF_groupBox);
@@ -292,6 +294,7 @@
             this.Controls.Add(this.ProcessList);
             this.Controls.Add(this.Memory);
             this.Controls.Add(this.CentralProcess);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);

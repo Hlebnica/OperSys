@@ -51,17 +51,8 @@ namespace PlanningProcess
             if(ProcessList.Items.Count > 0)
             {
                 Process itemNow = (Process) ProcessList.Items[0]; // Получение текущей записи по ID
-                Timer_form.Interval = itemNow.TimeToExecute;
-                foreach (Process items in ProcessList.Items)
-                {
-                    _listOfProcess.Add(items);
-                }
-                ProcessList.Items.Clear();
-                foreach (Process process in _listOfProcess)
-                {
-                    ProcessList.Items.Add(process);
-                }
-                _listOfProcess.Clear();
+                Timer_form.Interval = itemNow.TimeToExecute; // Назначить таймеру время выполнения текущего процесса
+                TimerUpdater(); // Обновление таймера
                 Timer_form.Start();
                 CentralProcessorCounter -= itemNow.HighlightingCentralProcessor;
                 AllocatedMemoryCounter -= itemNow.AllocatedMemory;
@@ -69,6 +60,20 @@ namespace PlanningProcess
                 Memory_Counter_label.Text = AllocatedMemoryCounter.ToString();
                 Invoke(new MethodInvoker(() => ProcessList.Items.RemoveAt(0))); // Удаление из списка выполненной задачи
             }
+        }
+
+        private void TimerUpdater()
+        {
+            foreach (Process items in ProcessList.Items)
+            {
+                _listOfProcess.Add(items);
+            }
+            ProcessList.Items.Clear();
+            foreach (Process process in _listOfProcess)
+            {
+                ProcessList.Items.Add(process);
+            }
+            _listOfProcess.Clear();
         }
         
         private void DateTimeNowChanger() // Обновление текущего системного времени
