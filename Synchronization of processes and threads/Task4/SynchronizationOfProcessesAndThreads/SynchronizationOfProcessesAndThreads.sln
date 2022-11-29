@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynchronizationOfProcessesAndThreads", "SynchronizationOfProcessesAndThreads\SynchronizationOfProcessesAndThreads.csproj", "{641C141C-486F-43DC-9488-77EB4AC91216}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{641C141C-486F-43DC-9488-77EB4AC91216}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{641C141C-486F-43DC-9488-77EB4AC91216}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{641C141C-486F-43DC-9488-77EB4AC91216}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{641C141C-486F-43DC-9488-77EB4AC91216}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
