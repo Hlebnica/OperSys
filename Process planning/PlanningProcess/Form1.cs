@@ -44,7 +44,7 @@ namespace PlanningProcess
         public int IdCounter = 0; // Счетчик id
         public int CentralProcessorCounter = 0; // Счетчик нагрузки процессора
         public int AllocatedMemoryCounter = 0; // Счетки выделенной памяти
-        public int CountItemInList = 0;
+        
 
         private void DeleteElementsFromTextBox() // Удаление элемента из списка
         {
