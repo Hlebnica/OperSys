@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "F:\\OperSys\\Synchronization of processes and threads\\Task4\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads.csproj": {}
+    "C:\\Users\\Dmitriy\\Desktop\\OperSys\\Synchronization of processes and threads\\Task4\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads.csproj": {}
   },
   "projects": {
-    "F:\\OperSys\\Synchronization of processes and threads\\Task4\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads.csproj": {
+    "C:\\Users\\Dmitriy\\Desktop\\OperSys\\Synchronization of processes and threads\\Task4\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\OperSys\\Synchronization of processes and threads\\Task4\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads.csproj",
+        "projectUniqueName": "C:\\Users\\Dmitriy\\Desktop\\OperSys\\Synchronization of processes and threads\\Task4\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads.csproj",
         "projectName": "SynchronizationOfProcessesAndThreads",
-        "projectPath": "F:\\OperSys\\Synchronization of processes and threads\\Task4\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads.csproj",
-        "packagesPath": "C:\\Users\\apple\\.nuget\\packages\\",
-        "outputPath": "F:\\OperSys\\Synchronization of processes and threads\\Task4\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads\\obj\\",
+        "projectPath": "C:\\Users\\Dmitriy\\Desktop\\OperSys\\Synchronization of processes and threads\\Task4\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads.csproj",
+        "packagesPath": "C:\\Users\\Dmitriy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dmitriy\\Desktop\\OperSys\\Synchronization of processes and threads\\Task4\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\apple\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dmitriy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

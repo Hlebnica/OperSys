@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "WwTHRN6jH6jYfWA2wWkEUa9bu9LoCzZpT65r5itqWqWRfxH5fitrQOIi+cvVa/NaB3sVir+JxY6HV75giIIVMA==",
+  "dgSpecHash": "I2fAZugFIETqqod6YZjRzTGMRqnV21yCiDQNpM6GkCLosYY/g+sIfb4HNEmCkzjSz3nUP8WIcFMkZvPhC2Ta0w==",
   "success": true,
-  "projectFilePath": "F:\\OperSys\\Synchronization of processes and threads\\Task4\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads.csproj",
+  "projectFilePath": "C:\\Users\\Dmitriy\\Desktop\\OperSys\\Synchronization of processes and threads\\Task4\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads\\SynchronizationOfProcessesAndThreads.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\apple\\.nuget\\packages\\system.threading.tasks.dataflow\\7.0.0\\system.threading.tasks.dataflow.7.0.0.nupkg.sha512"
+    "C:\\Users\\Dmitriy\\.nuget\\packages\\system.threading.tasks.dataflow\\7.0.0\\system.threading.tasks.dataflow.7.0.0.nupkg.sha512"
   ],
   "logs": []
 }

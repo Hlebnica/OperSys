@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
-List<int> buffer = new List<int>();
+int[] buffer = new int[10];
 int producer = 2000;
 int consumer = 2000;
 
@@ -11,15 +11,18 @@ void Producer()
     while (true)
     {
         Random random = new Random();
-        if (buffer.Count <= 10)
+        
+        for (int i = 0; i < buffer.Length; i++)
         {
-            buffer.Add(random.Next(15));
+            buffer[i] = random.Next(10);
         }
+
+        foreach (var items in buffer)
+        {
+            Console.WriteLine(items);
+        }
+
         Thread.Sleep(producer);
-        foreach (var value in buffer)
-        {
-            Console.WriteLine(value);
-        }
     }
 }
 
@@ -27,6 +30,7 @@ void Consumer()
 {
     Thread.Sleep(consumer);
 }
+
 
 Thread producerThread = new Thread(Producer);
 producerThread.Start();
