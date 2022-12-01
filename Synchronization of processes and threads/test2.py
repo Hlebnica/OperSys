@@ -39,6 +39,3 @@ class Me(threading.Thread):
         self.pause_cond.notify()
         # Now release the lock
         self.pause_cond.release()
-
-
-
