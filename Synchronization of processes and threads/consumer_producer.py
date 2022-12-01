@@ -8,6 +8,9 @@ buffer = []
 producer_stop = True
 consumer_stop = True
 
+producer_pause = True
+consumer_pause = True
+
 producer_sleep_time = 1
 consumer_sleep_time = 2.5
 
@@ -19,42 +22,44 @@ full = threading.Semaphore(0)
 
 class Producer(threading.Thread):
     def run(self):
-        global buffer_size, buffer, mutex, empty, full, producer_sleep_time, producer_stop
+        global buffer_size, buffer, mutex, empty, full, producer_sleep_time, producer_stop, producer_pause
 
         while producer_stop:
-            number = random.randint(1, 90)
-            empty.acquire()
-            mutex.acquire()
+            if producer_pause:
+                number = random.randint(1, 90)
+                empty.acquire()
+                mutex.acquire()
 
-            if len(buffer) <= 10:
-                buffer.insert(0, number)
-                print("\nProducer produced : ", number)
-                print("Buffer len: ", len(buffer))
-                print("Items in buffer: ", buffer, "\n")
+                if len(buffer) <= 10:
+                    buffer.insert(0, number)
+                    print("\nProducer produced : ", number)
+                    print("Buffer len: ", len(buffer))
+                    print("Items in buffer: ", buffer, "\n")
 
-            mutex.release()
-            full.release()
+                mutex.release()
+                full.release()
 
-            time.sleep(producer_sleep_time)
+                time.sleep(producer_sleep_time)
 
 
 class Consumer(threading.Thread):
     def run(self):
-        global buffer_size, buffer, mutex, empty, full, consumer_sleep_time, consumer_stop
+        global buffer_size, buffer, mutex, empty, full, consumer_sleep_time, consumer_stop, consumer_pause
 
         while consumer_stop:
-            full.acquire()
-            mutex.acquire()
+            if consumer_pause:
+                full.acquire()
+                mutex.acquire()
 
-            if len(buffer) > 0:
-                item = buffer[-1]
-                buffer.pop()
-                print("Consumer consumed item : ", item)
+                if len(buffer) > 0:
+                    item = buffer[-1]
+                    buffer.pop()
+                    print("Consumer consumed item : ", item)
 
-            mutex.release()
-            empty.release()
+                mutex.release()
+                empty.release()
 
-            time.sleep(consumer_sleep_time)
+                time.sleep(consumer_sleep_time)
 
 
 def sleep_up_producer(*args):
@@ -93,12 +98,31 @@ def producer_stop_changer(*args):
         producer_stop = False
 
 
+def consumer_pause_changer(*args):
+    global consumer_pause
+    if consumer_pause:
+        consumer_pause = False
+    else:
+        consumer_pause = True
+
+
+def producer_pause_changer(*args):
+    global producer_pause
+    if producer_pause:
+        producer_pause = False
+    else:
+        producer_pause = True
+
+
 keyboard.on_release_key('1', sleep_up_producer)
 keyboard.on_release_key('2', sleep_up_consumer)
 keyboard.on_release_key('3', sleep_down_producer)
 keyboard.on_release_key('4', sleep_down_consumer)
 keyboard.on_release_key('5', sleep_down_consumer)
 keyboard.on_release_key('6', consumer_stop, producer_stop)
+keyboard.on_release_key('7', consumer_pause_changer)
+keyboard.on_release_key('8', producer_pause_changer)
+
 
 producer = Producer()
 consumer = Consumer()
